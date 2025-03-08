@@ -5,6 +5,22 @@
   text-align: center;
 }
 
+.team-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 16px;
+  padding: 20px;
+}
+
+.team-card {
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  text-align: center;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

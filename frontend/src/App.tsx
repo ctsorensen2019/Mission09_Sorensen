@@ -1,35 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import teamsData from '../src/CollegeBasketballTeams.json';
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+function Welcome() {
+  return <h1>NCAA Basketball Teams</h1>;
 }
 
-export default App
+function TeamCard({
+  team,
+}: {
+  team: {
+    school: string;
+    name: string;
+    abbrev: string;
+    city: string;
+    state: string;
+  };
+}) {
+  return (
+    <div className="team-card">
+      <h2>
+        {team.school} ({team.abbrev})
+      </h2>
+      <h3>Mascot: {team.name}</h3>
+      <p>
+        Location: {team.city}, {team.state}
+      </p>
+      <br></br>
+    </div>
+  );
+}
+
+function TeamList() {
+  return (
+    <div className="team-list">
+      {teamsData.teams.map((team, index) => (
+        <TeamCard key={index} team={team} />
+      ))}
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <>
+      <Welcome />
+      <TeamList />
+    </>
+  );
+}
+
+export default App;
